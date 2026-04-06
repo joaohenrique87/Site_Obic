@@ -1,0 +1,233 @@
+/* Container geral */
+.container-carrossel {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Wrapper com setas */
+.carrossel-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+/* Viewport — janela visível, não pode vazar */
+.carrossel-viewport {
+  flex: 1;
+  overflow: hidden;
+  min-width: 0;
+}
+
+/* Faixa deslizante */
+.carrossel-faixa {
+  display: flex;
+  transition: transform 0.4s ease;
+  will-change: transform;
+}
+
+/* Item individual — largura exata de 25% para mostrar 4 */
+.carrossel-item {
+  flex: 0 0 25%;
+  min-width: 0;
+  padding: 0 0.4rem;
+  box-sizing: border-box;
+}
+
+/* Setas */
+.seta {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+  z-index: 1;
+}
+
+.seta:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.seta:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Card */
+.card-relatorio {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  height: 100%;
+}
+
+.card-relatorio:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Capa */
+.card-capa {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.capa-canvas {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  display: block;
+}
+
+.capa-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e8e8e8;
+  color: #999;
+  font-size: 0.9rem;
+  font-family: 'Cambria', serif;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.capa-erro {
+  background: #fdecea;
+  color: #c0392b;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Info */
+.card-info {
+  padding: 1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.card-info h3 {
+  font-size: 0.9rem;
+  font-family: 'Cambria', serif;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+  line-height: 1.4;
+  text-transform: capitalize;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Botões */
+.acoes {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-visualizar,
+.btn-baixar {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-family: 'Cambria', serif;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-visualizar:hover,
+.btn-baixar:hover {
+  opacity: 0.85;
+}
+
+.btn-visualizar {
+  background: #6d28d9;
+  color: #fff;
+}
+
+.btn-baixar {
+  background: #16a34a;
+  color: #fff;
+}
+
+/* Loader */
+.loader {
+  text-align: center;
+  padding: 2rem;
+  font-family: 'Cambria', serif;
+  color: #666;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.loader.erro {
+  color: #c0392b;
+}
+
+/* ── Responsivo mobile ── */
+@media (max-width: 640px) {
+  .carrossel-item {
+    flex: 0 0 100% !important;
+    padding: 0 0.25rem;
+  }
+
+  .card-capa {
+    height: 220px;
+  }
+
+  .grid-arquivos {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .carrossel-item {
+    flex: 0 0 50% !important;
+  }
+}
+
+/* Botões empilhados no mobile */
+@media (max-width: 640px) {
+  .acoes {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .btn-visualizar,
+  .btn-baixar {
+    width: 100%;
+    font-size: 0.8rem;
+    padding: 0.45rem 0.5rem;
+  }
+}
