@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import CarrosselRelatorio from '@/CarrosselRelatorio.jsx';
 import QuemSomosSection from "@/components/QuemSomosSection.jsx";
-import YoutubePlaylist from "@/components/YoutubePlaylist";
+
 import pnab from "@/assets/pnab.png";
 import lpg from "@/assets/lpg.jpeg";
 import rouanet from "@/assets/rouanet.png";
@@ -25,7 +25,7 @@ const Index = () => {
         <Hero />
 
         <QuemSomosSection />
-        <YoutubePlaylist />
+       
         <section className="py-20 bg-background">
           <div className="max-w-[1600px] mx-auto px-4">
             <div className="text-center mb-16">
