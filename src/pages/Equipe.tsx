@@ -3,17 +3,17 @@ import Footer from "@/components/Footer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-import manuella from "@/assets/manuela-oliveira.jpeg";
-import danillo from "@/assets/danillo-rafael.jpeg";
-import mariana from "@/assets/mariana-barros.jpeg";
-import joao from "@/assets/joao-henrique.jpeg";
-import pedro from "@/assets/pedro-augusto.jpeg";
+import manuella from "@/assets/Manuella Oliveira ObIC.jpg";
+import danillo from "@/assets/Danillo Rafael ObIC.jpg";
+import mariana from "@/assets/Mariana Barros ObIC.jpg";
+import joao from "@/assets/João Henrique - ObIC.jpg";
+import pedro from "@/assets/Pedro Augusto - ObiC.jpeg";
 
 const teamMembers = [
   {
     name: "Manuella Oliveira",
     role: "Gerente",
-    bio: "Bacharela em Relações Internacionais pela Universidade Católica de Pernambuco (UNICAP). Mestre em Ciência Política pela Universidade Federal de Pernambuco (UFPE). Tem interesse em políticas públicas, métodos de pesquisa e cultura. Integra o Observatório desde setembro de 2021.",
+    bio: "Doutora em Sociologia pela Universidade Federal de Pernambuco (UFPE) e pela Universidad de La República (UDELAR - Uruguai), Bacharel em Ciências Sociais e Mestre em Desenvolvimento Local, pela Universidade Federal Rural de Pernambuco (UFRPE).  Integra o Observatório desde setembro de 2023.",
     initials: "MO",
     photo: manuella,
   },
@@ -34,7 +34,7 @@ const teamMembers = [
   {
     name: "João Henrique",
     role: "Analista de dados e Pesquisador",
-    bio: "Graduando em Análise de Desenvolvimento de Sistema - SENAC. Integra o Observatório desde Julho de 2024.",
+    bio: "Análista e Desenvolvedor de Sistema - SENAC. Integra o Observatório desde Julho de 2024.",
     initials: "JH",
     photo: joao,
   },

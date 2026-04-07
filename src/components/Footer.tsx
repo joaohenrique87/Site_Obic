@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import { MessageCircle,Mail, MapPin, Linkedin, Youtube } from "lucide-react";
+import { MessageCircle,Mail, MapPin, Linkedin, Youtube, Phone } from "lucide-react";
 import Whatsapp from "./Whatsapp";
 
 const Footer = () => {
   return (
-    <footer className="bg-muted border-t border-border mt-20">
+    <footer className="bg-muted border-t border-border">
       <div className="container py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
 
@@ -74,6 +74,13 @@ const Footer = () => {
                   observatorio@secult.pe.gov.br
                 </a>
               </li>
+            <li className="flex items-center gap-2 text-muted-foreground">
+                <Phone className="h-4 w-4 flex-shrink-0"/>
+                <a href="https://wa.me/5581984942007?text=Olá%20vim%20do%20Site%20do%20Observatório%20de%20Indicadores%20Culturais" className="hover:text-primary transition-colors">
+                 (81) 9.8494-2007
+                </a>
+              </li>
+              
             </ul>
           </div>
 
@@ -98,14 +105,7 @@ const Footer = () => {
                 <Youtube className="h-5 w-5" />
               </a>
 
-              <a
-                href="https://wa.me/5581984942007?text=Olá%20vim%20do%20Site%20do%20Observatório%20de%20Indicadores%20Culturais"
-                target="_blank"
-                rel="noreferrer"
-                className="h-10 w-10 rounded-full bg-background border border-border flex items-center justify-center hover:bg-green-500 hover:text-white transition"
-              >
-                <MessageCircle className="h-5 w-5" />
-              </a>
+              
             </div>
           </div>
 

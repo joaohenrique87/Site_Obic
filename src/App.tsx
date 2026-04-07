@@ -15,6 +15,9 @@ import RelatoriosPDF from "@/pages/Relatorios";
 import Contato from "@/pages/Contato";
 import "./styles/youtube.css";
 import Whatsapp from "@/components/Whatsapp";
+import { VLibras } from "react-vlibras-plugin";
+
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -34,6 +37,8 @@ const App = () => (
           <Route path="/contato" element={<Contato />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        
+
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

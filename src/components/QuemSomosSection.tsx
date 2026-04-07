@@ -55,7 +55,7 @@ const QuemSomosSection = () => {
             gap: "1.25rem",
           }}>
             <h2 style={{ fontFamily: "Cambria, serif", fontSize: "1.875rem", fontWeight: 700 }}>
-              Vídeos
+              ObiC na Mídia
             </h2>
 
             {/* Player com borda e sombra refinados */}
@@ -79,15 +79,7 @@ const QuemSomosSection = () => {
 
             {/* Rodapé do vídeo: label + botão para playlist */}
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "1rem" }}>
-              <p style={{
-                fontFamily: "Cambria, serif",
-                fontSize: "0.82rem",
-                color: "hsl(var(--muted-foreground))",
-                margin: 0,
-                lineHeight: 1.5,
-              }}>
-                Acompanhe nossos vídeos sobre políticas culturais e dados de Pernambuco.
-              </p>
+             
               <a
                 href={YOUTUBE_CHANNEL_URL}
                 target="_blank"
