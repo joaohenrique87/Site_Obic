@@ -12,7 +12,7 @@ const QuemSomos = () => {
         <section className="bg-gradient-primary py-20">
           <div className="container">
             <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
+              <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6 ">
                 Quem Somos
               </h1>
               <p className="text-lg text-primary-foreground/90">
@@ -28,7 +28,7 @@ const QuemSomos = () => {
           <div className="container max-w-4xl">
             <div className="prose prose-lg max-w-none">
               {/* Introdução */}
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+              <p className="text-lg text-muted-foreground leading-relaxed mb-6 text-justify">
                 O{" "}
                 <strong>
                   Observatório de Indicadores Culturais e Inovação em Dados
@@ -40,7 +40,7 @@ const QuemSomos = () => {
               </p>
 
               {/* Trajetória 2021-2022 */}
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+              <p className="text-lg text-muted-foreground leading-relaxed mb-6 text-justify">
                 A trajetória do Observatório tem início em 2021, com a criação
                 do setor de pesquisa no Núcleo de Gestão da Informação (GI),
                 marcando o início da estruturação das atividades de produção e
@@ -51,7 +51,7 @@ const QuemSomos = () => {
               </p>
 
               {/* Reestruturação 2023 */}
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+              <p className="text-lg text-muted-foreground leading-relaxed mb-6 text-justify">
                 Em fevereiro de 2023, o NIAPP é reestruturado e passa a se
                 configurar como Observatório de Indicadores Culturais (ObIC),
                 consolidando a agenda de dados e evidências na gestão cultural.
@@ -61,7 +61,7 @@ const QuemSomos = () => {
               </p>
 
               {/* Marcos 2024-2025 */}
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+              <p className="text-lg text-muted-foreground leading-relaxed mb-6 text-justify">
                 Já em 2024, o Observatório alcança dois marcos importantes: em
                 fevereiro, realiza o lançamento do 1º Censo Cultural de
                 Pernambuco, iniciativa inédita de mapeamento do setor cultural
@@ -74,7 +74,7 @@ const QuemSomos = () => {
               </p>
 
               {/* Consolidação Técnica */}
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+              <p className="text-lg text-muted-foreground leading-relaxed mb-6 text-justify">
                 A partir dessa trajetória, o ObIC se consolida como núcleo
                 técnico responsável pelo monitoramento e avaliação das políticas
                 culturais desenvolvidas em Pernambuco. Por meio da construção de
@@ -85,7 +85,7 @@ const QuemSomos = () => {
               </p>
 
               {/* Iniciativas */}
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+              <p className="text-lg text-muted-foreground leading-relaxed mb-6 text-justify">
                 Entre suas principais iniciativas, destacam-se o desenvolvimento
                 de painéis e plataformas digitais de acompanhamento de políticas
                 de fomento, a realização de pesquisas e levantamentos sobre o
