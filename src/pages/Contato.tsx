@@ -93,10 +93,10 @@ const Contato = () => {
               <div style={{ display: "flex", flexDirection: "column", gap: "1.75rem" }}>
 
                 <div>
-                  <h2 style={{ fontFamily: "Cambria, serif", fontSize: "1.5rem", fontWeight: 700, marginBottom: "1rem" }}>
+                  <h2 style={{ font: "sans", fontSize: "1.5rem", fontWeight: 700, marginBottom: "1rem" }}>
                     Informações
                   </h2>
-                  <p style={{ fontFamily: "Cambria, serif", fontSize: "0.95rem", color: "hsl(var(--muted-foreground))", lineHeight: 1.7 }}>
+                  <p style={{ font: "sans", fontSize: "0.95rem", color: "hsl(var(--muted-foreground))", lineHeight: 1.7 }}>
                     Estamos disponíveis para responder dúvidas, receber sugestões e colaborar com pesquisas sobre políticas culturais.
                   </p>
                 </div>
@@ -107,11 +107,11 @@ const Contato = () => {
                     <MapPin style={{ width: 18, height: 18, color: "hsl(var(--primary))" }} />
                   </div>
                   <div>
-                    <p style={{ fontWeight: 600, fontSize: "0.85rem", marginBottom: "0.2rem", fontFamily: "Cambria, serif" }}>Endereço</p>
+                    <p style={{ fontWeight: 600, fontSize: "0.85rem", marginBottom: "0.2rem", font: "sans" }}>Endereço</p>
                     <a
                       href="https://www.google.com/maps/search/?api=1&query=R.+José+de+Alencar,+388+Boa+Vista+Recife+PE"
                       target="_blank" rel="noreferrer"
-                      style={{ fontSize: "0.85rem", color: "hsl(var(--muted-foreground))", textDecoration: "none", fontFamily: "Cambria, serif" }}
+                      style={{ fontSize: "0.85rem", color: "hsl(var(--muted-foreground))", textDecoration: "none", font: "sans" }}
                     >
                       R. José de Alencar, 388 - Boa Vista<br />Recife - PE, 50070-030
                     </a>
@@ -124,10 +124,10 @@ const Contato = () => {
                     <Mail style={{ width: 18, height: 18, color: "hsl(var(--primary))" }} />
                   </div>
                   <div>
-                    <p style={{ fontWeight: 600, fontSize: "0.85rem", marginBottom: "0.2rem", fontFamily: "Cambria, serif" }}>E-mail</p>
+                    <p style={{ fontWeight: 600, fontSize: "0.85rem", marginBottom: "0.2rem", font: "sans" }}>E-mail</p>
                     <a
                       href="mailto:observatorio@secult.pe.gov.br"
-                      style={{ fontSize: "0.85rem", color: "hsl(var(--muted-foreground))", textDecoration: "none", fontFamily: "Cambria, serif" }}
+                      style={{ fontSize: "0.85rem", color: "hsl(var(--muted-foreground))", textDecoration: "none", font: "sans" }}
                     >
                       observatorio@secult.pe.gov.br
                     </a>
@@ -153,7 +153,7 @@ const Contato = () => {
                       borderRadius: "10px",
                       background: "#25D366",
                       color: "#fff",
-                      fontFamily: "Cambria, serif",
+                      font: "sans",
                       fontWeight: 700,
                       fontSize: "0.95rem",
                       textDecoration: "none",
@@ -182,10 +182,10 @@ const Contato = () => {
                 {sucesso ? (
                   <div style={{ textAlign: "center", padding: "2rem 0" }}>
                     <CheckCircle style={{ width: 56, height: 56, color: "#16a34a", margin: "0 auto 1rem" }} />
-                    <h3 style={{ fontFamily: "Cambria, serif", fontSize: "1.3rem", fontWeight: 700, marginBottom: "0.5rem" }}>
+                    <h3 style={{ font: "sans", fontSize: "1.3rem", fontWeight: 700, marginBottom: "0.5rem" }}>
                       Mensagem enviada!
                     </h3>
-                    <p style={{ fontFamily: "Cambria, serif", color: "hsl(var(--muted-foreground))", fontSize: "0.95rem" }}>
+                    <p style={{ font: "sans", color: "hsl(var(--muted-foreground))", fontSize: "0.95rem" }}>
                       Obrigado pelo contato. Retornaremos em breve.
                     </p>
                     <button
@@ -193,7 +193,7 @@ const Contato = () => {
                       style={{
                         marginTop: "1.5rem", padding: "0.6rem 1.5rem", borderRadius: "8px",
                         background: "hsl(var(--primary))", color: "hsl(var(--primary-foreground))",
-                        border: "none", cursor: "pointer", fontWeight: 600, fontFamily: "Cambria, serif",
+                        border: "none", cursor: "pointer", fontWeight: 600, font: "sans",
                       }}
                     >
                       Enviar outra mensagem
@@ -201,7 +201,7 @@ const Contato = () => {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-                    <h2 style={{ fontFamily: "Cambria, serif", fontSize: "1.4rem", fontWeight: 700, marginBottom: "0.5rem" }}>
+                    <h2 style={{ font: "sans", fontSize: "1.4rem", fontWeight: 700, marginBottom: "0.5rem" }}>
                       Envie uma mensagem
                     </h2>
 
@@ -240,7 +240,7 @@ const Contato = () => {
                     </div>
 
                     {erro && (
-                      <p style={{ color: "#c0392b", fontSize: "0.85rem", fontFamily: "Cambria, serif" }}>{erro}</p>
+                      <p style={{ color: "#c0392b", fontSize: "0.85rem", font: "sans" }}>{erro}</p>
                     )}
 
                     {/* Enviar — exclusivo do formulário, alinhado à direita */}
@@ -255,7 +255,7 @@ const Contato = () => {
                           color: loading ? "hsl(var(--muted-foreground))" : "hsl(var(--primary-foreground))",
                           fontWeight: 700, fontSize: "0.95rem",
                           cursor: loading ? "not-allowed" : "pointer",
-                          fontFamily: "Cambria, serif",
+                          font: "sans",
                           transition: "opacity 0.2s",
                         }}
                       >
