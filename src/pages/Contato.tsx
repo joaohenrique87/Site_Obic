@@ -45,7 +45,7 @@ const Contato = () => {
     fontSize: "0.95rem",
     outline: "none",
     transition: "border-color 0.2s",
-    fontFamily: "Cambria, serif",
+    fontFamily: "sans",
   };
 
   const labelStyle: React.CSSProperties = {
