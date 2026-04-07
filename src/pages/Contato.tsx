@@ -171,7 +171,7 @@ const Contato = () => {
                 </div>
               </div>
 
-              {/* ════ Formulário de e-mail ════ */}
+              {/* email */}
               <div style={{
                 background: "hsl(var(--card))",
                 borderRadius: "16px",
