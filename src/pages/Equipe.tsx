@@ -1,6 +1,12 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 import manuella from "@/assets/Manuella Oliveira ObIC.jpg";
@@ -20,7 +26,7 @@ const teamMembers = [
   {
     name: "Danillo Rafael",
     role: "Analista de dados e Pesquisador",
-    bio: "Doutorando e Mestre em Ciência Política pela Universidade Federal de Pernambuco, Bacharel em Relações Internacionais. Tem interesse em políticas públicas, análise de dados, métodos de pesquisa, café e death metal. Integra o Observatório desde julho de 2022.",
+    bio: "Doutorando e Mestre em Ciência Política pela Universidade Federal de Pernambuco, Bacharel em Relações Internacionais. Tem interesse em políticas públicas, análise de dados e métodos de pesquisa. Integra o Observatório desde julho de 2022.",
     initials: "DR",
     photo: danillo,
   },
@@ -60,7 +66,8 @@ const Equipe = () => {
                 Nossa Equipe
               </h1>
               <p className="text-lg text-primary-foreground/90">
-                Conheça os profissionais que transformam dados em informações para a cultura de Pernambuco
+                Conheça os profissionais que transformam dados em informações
+                para a cultura de Pernambuco
               </p>
             </div>
           </div>
@@ -70,7 +77,10 @@ const Equipe = () => {
           <div className="container">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {teamMembers.map((member, index) => (
-                <Card key={index} className="border-2 hover:border-primary transition-all hover:shadow-medium">
+                <Card
+                  key={index}
+                  className="border-2 hover:border-primary transition-all hover:shadow-medium"
+                >
                   <CardHeader className="text-center">
                     <Avatar className="h-24 w-24 mx-auto mb-4">
                       <AvatarImage
