@@ -6,7 +6,7 @@ const QuemSomos = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      
+
       <main className="flex-1">
         {/* Hero Section */}
         <section className="bg-gradient-primary py-20">
@@ -16,7 +16,8 @@ const QuemSomos = () => {
                 Quem Somos
               </h1>
               <p className="text-lg text-primary-foreground/90">
-                Conheça mais sobre o Observatório de Indicadores Culturais de Pernambuco
+                Conheça mais sobre o Observatório de Indicadores Culturais de
+                Pernambuco
               </p>
             </div>
           </div>
@@ -26,18 +27,71 @@ const QuemSomos = () => {
         <section className="py-20 bg-background">
           <div className="container max-w-4xl">
             <div className="prose prose-lg max-w-none">
+              {/* Introdução */}
               <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                O <strong>Observatório de Indicadores Culturais e Inovação em Dados (ObIC)</strong> é uma gerência da Secretaria de Cultura de Pernambuco (SECULT-PE), sediada no Recife, dedicada à produção, sistematização e análise de dados sobre a cultura no estado.
-              </p>
-              
-              <p className="text-lg text-muted-foreground leading-relaxed mb-12">
-                Com um enfoque particular no acompanhamento dos estudos relacionados às políticas culturais desenvolvidas 
-                pela SECULT-PE, o Observatório desenvolve e analisa indicadores culturais, transformando números em informações. 
-                Essa análise serve como bússola para a tomada de decisão da alta gestão, orientando-os na formulação de políticas 
-                públicas que não são apenas responsivas às necessidades culturais emergentes, mas também moldadas por uma 
-                compreensão sólida das dinâmicas culturais do estado.
+                O{" "}
+                <strong>
+                  Observatório de Indicadores Culturais e Inovação em Dados
+                  (ObIC)
+                </strong>{" "}
+                é uma gerência da Secretaria de Cultura de Pernambuco
+                (SECULT-PE), sediada no Recife, dedicada à produção,
+                sistematização e análise de dados sobre a cultura no estado.
               </p>
 
+              {/* Trajetória 2021-2022 */}
+              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                A trajetória do Observatório tem início em 2021, com a criação
+                do setor de pesquisa no Núcleo de Gestão da Informação (GI),
+                marcando o início da estruturação das atividades de produção e
+                análise de dados culturais na Secretaria. Em 2022, esse processo
+                é ampliado com a criação do Núcleo de Inovação e Análise de
+                Políticas Públicas (NIAPP), fortalecendo a atuação em pesquisa e
+                avaliação de políticas públicas.
+              </p>
+
+              {/* Reestruturação 2023 */}
+              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                Em fevereiro de 2023, o NIAPP é reestruturado e passa a se
+                configurar como Observatório de Indicadores Culturais (ObIC),
+                consolidando a agenda de dados e evidências na gestão cultural.
+                Ainda em outubro de 2023, o ObIC passa a integrar a Rede
+                Brasileira de Observatórios de Turismo (RBOT), ampliando sua
+                articulação institucional em nível nacional.
+              </p>
+
+              {/* Marcos 2024-2025 */}
+              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                Já em 2024, o Observatório alcança dois marcos importantes: em
+                fevereiro, realiza o lançamento do 1º Censo Cultural de
+                Pernambuco, iniciativa inédita de mapeamento do setor cultural
+                no estado; e, em setembro, é oficialmente instituído como
+                Gerência do Observatório de Indicadores Culturais e Inovação em
+                Dados, consolidando sua posição na estrutura organizacional da
+                SECULT-PE. Em 2025, o ObIC dá continuidade ao processo de
+                fortalecimento institucional, ampliando suas ações de
+                monitoramento, inovação em dados e articulação em redes.
+              </p>
+
+              {/* Consolidação Técnica */}
+              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                A partir dessa trajetória, o ObIC se consolida como núcleo
+                técnico responsável pelo monitoramento e avaliação das políticas
+                culturais desenvolvidas em Pernambuco. Por meio da construção de
+                indicadores, estudos e ferramentas de visualização, o
+                Observatório transforma dados em informação qualificada,
+                subsidiando a tomada de decisão e fortalecendo a gestão pública
+                baseada em evidências.
+              </p>
+
+              {/* Iniciativas */}
+              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                Entre suas principais iniciativas, destacam-se o desenvolvimento
+                de painéis e plataformas digitais de acompanhamento de políticas
+                de fomento, a realização de pesquisas e levantamentos sobre o
+                setor cultural — como o mapeamento de agentes e equipamentos
+                culturais
+              </p>
               {/* Mission, Vision, Values, Objectives */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
                 <div className="bg-muted rounded-2xl p-8 border border-border">
@@ -45,12 +99,16 @@ const QuemSomos = () => {
                     <div className="h-12 w-12 rounded-lg bg-gradient-primary flex items-center justify-center">
                       <Target className="h-6 w-6 text-primary-foreground" />
                     </div>
-                    <h2 className="text-2xl font-bold text-foreground">Missão</h2>
+                    <h2 className="text-2xl font-bold text-foreground">
+                      Missão
+                    </h2>
                   </div>
                   <p className="text-muted-foreground leading-relaxed">
-                    Auxiliar a cultura pernambucana através de dados e informações que promovam e apoiem as ações 
-                    dos agentes, equipamentos e das organizações governamentais e não governamentais, contribuindo 
-                    para o desenvolvimento cultural.
+                    Auxiliar a cultura pernambucana através de dados e
+                    informações que promovam e apoiem as ações dos agentes,
+                    equipamentos e das organizações governamentais e não
+                    governamentais, contribuindo para o desenvolvimento
+                    cultural.
                   </p>
                 </div>
 
@@ -59,11 +117,14 @@ const QuemSomos = () => {
                     <div className="h-12 w-12 rounded-lg bg-gradient-accent flex items-center justify-center">
                       <Eye className="h-6 w-6 text-accent-foreground" />
                     </div>
-                    <h2 className="text-2xl font-bold text-foreground">Visão</h2>
+                    <h2 className="text-2xl font-bold text-foreground">
+                      Visão
+                    </h2>
                   </div>
                   <p className="text-muted-foreground leading-relaxed">
-                    Institucionalizar o monitoramento e a coleta sistemática de dados e informações da cultura, 
-                    buscando criar uma gestão orientada por dados para tomada de decisão até 2026.
+                    Institucionalizar o monitoramento e a coleta sistemática de
+                    dados e informações da cultura, buscando criar uma gestão
+                    orientada por dados para tomada de decisão até 2026.
                   </p>
                 </div>
 
@@ -72,11 +133,13 @@ const QuemSomos = () => {
                     <div className="h-12 w-12 rounded-lg bg-gradient-primary flex items-center justify-center">
                       <Heart className="h-6 w-6 text-primary-foreground" />
                     </div>
-                    <h2 className="text-2xl font-bold text-foreground">Valores</h2>
+                    <h2 className="text-2xl font-bold text-foreground">
+                      Valores
+                    </h2>
                   </div>
                   <p className="text-muted-foreground leading-relaxed">
-                    Transparência, ética, inovação e integridade em todas as nossas ações e relacionamentos 
-                    com stakeholders.
+                    Transparência, ética, inovação e integridade em todas as
+                    nossas ações e relacionamentos com stakeholders.
                   </p>
                 </div>
 
@@ -85,11 +148,14 @@ const QuemSomos = () => {
                     <div className="h-12 w-12 rounded-lg bg-gradient-accent flex items-center justify-center">
                       <Lightbulb className="h-6 w-6 text-accent-foreground" />
                     </div>
-                    <h2 className="text-2xl font-bold text-foreground">Objetivos</h2>
+                    <h2 className="text-2xl font-bold text-foreground">
+                      Objetivos
+                    </h2>
                   </div>
                   <p className="text-muted-foreground leading-relaxed">
-                    Criar uma cultura de dados na gestão pública e ampliar o acesso às informações sobre 
-                    agentes e equipamentos culturais no estado de Pernambuco.
+                    Criar uma cultura de dados na gestão pública e ampliar o
+                    acesso às informações sobre agentes e equipamentos culturais
+                    no estado de Pernambuco.
                   </p>
                 </div>
               </div>
