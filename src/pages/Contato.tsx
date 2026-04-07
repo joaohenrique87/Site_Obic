@@ -54,7 +54,7 @@ const Contato = () => {
     fontWeight: 600,
     marginBottom: "0.4rem",
     color: "hsl(var(--foreground))",
-    fontFamily: "Cambria, serif",
+    fontFamily: "sans",
   };
 
   return (
