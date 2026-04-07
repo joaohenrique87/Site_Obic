@@ -87,10 +87,11 @@ const QuemSomos = () => {
               {/* Iniciativas */}
               <p className="text-lg text-muted-foreground leading-relaxed mb-6 text-justify">
                 Entre suas principais iniciativas, destacam-se o desenvolvimento
-                de painéis e plataformas digitais de acompanhamento de políticas
-                de fomento, a realização de pesquisas e levantamentos sobre o
-                setor cultural — como o mapeamento de agentes e equipamentos
-                culturais
+                de painéis de acompanhamento de indicadores de políticas de
+                fomento, a realização de pesquisas, relatórios técnicos, estudos
+                teóricos e metodológicos, formulários e levantamentos sobre o
+                setor cultural, como o mapeamento de agentes e equipamentos
+                culturais.
               </p>
               {/* Mission, Vision, Values, Objectives */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
