@@ -88,20 +88,17 @@ const Index = () => {
         {/* Parceiros — mesmo fundo da seção anterior, sem gap */}
         {/* Parceiros — fundo branco para as logos sem transparência */}
         <section className="bg-white py-16 border-t border-border">
-          <div className="max-w-5xl mx-auto px-6">
+          <div className="max-w-6xl mx-auto px-6">
             <h2 className="text-primary text-3xl md:text-4xl font-bold text-center mb-12">
               Parceiros
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center justify-items-center">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
               {parceiros.map((p) => (
-                <div
-                  key={p.alt}
-                  className="flex items-center justify-center p-2"
-                >
+                <div key={p.alt} className="flex items-center justify-center p-4 h-24">
                   <img
                     src={p.img}
                     alt={p.alt}
-                    className="h-12 md:h-16 w-auto object-contain opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-105"
+                    className="max-h-full max-w-full object-contain opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110"
                   />
                 </div>
               ))}

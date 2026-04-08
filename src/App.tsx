@@ -1,3 +1,4 @@
+// src/App.tsx
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -11,12 +12,9 @@ import Pesquisas from "./pages/Pesquisas";
 import CulturaEmNumeros from "./pages/CulturaEmNumeros";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
-import RelatoriosPDF from "@/pages/Relatorios";
 import Contato from "@/pages/Contato";
-import "./styles/youtube.css";
 import Whatsapp from "@/components/Whatsapp";
-import { VLibras } from "react-vlibras-plugin";
-
+import VLibras from "react-vlibras-plugin"; // Importação direta sem chaves se for export default
 
 const queryClient = new QueryClient();
 
@@ -26,19 +24,22 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-      <ScrollToTop />
+        <ScrollToTop />
+       
+        <VLibras forceOnload={true} /> 
+        
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/quem-somos" element={<QuemSomos />} />
           <Route path="/equipe" element={<Equipe />} />          
           <Route path="/pesquisas" element={<Pesquisas />} />
           <Route path="/cultura-em-numeros" element={<CulturaEmNumeros />} />
-          <Route path="/relatorios" element={<Relatorios    />} />
+          <Route path="/relatorios" element={<Relatorios />} />
           <Route path="/contato" element={<Contato />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         
-
+        <Whatsapp />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

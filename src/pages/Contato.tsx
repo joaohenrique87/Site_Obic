@@ -1,272 +1,123 @@
 import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Mail, MapPin, Send, CheckCircle } from "lucide-react";
+import { Mail, MapPin, Send, CheckCircle, MessageCircle } from "lucide-react";
 import emailjs from "@emailjs/browser";
 
 const EMAILJS_SERVICE_ID  = "service_jozgifm";
 const EMAILJS_TEMPLATE_ID = "template_opcnmyi";
 const EMAILJS_PUBLIC_KEY  = "cv3IgmGvPiR2RduBV";
 
-// ─── Edite aqui o número e mensagem padrão do WhatsApp ────────
-const WHATSAPP_URL = "https://wa.me/5581984942007?text=Ol%C3%A1%20vim%20do%20Site%20do%20Observat%C3%B3rio%20de%20Indicadores%20Culturais";
-
 const Contato = () => {
-  const [form, setForm]    = useState({ nome: "", email: "", telefone: "", mensagem: "" });
-  const [loading, setLoad] = useState(false);
-  const [sucesso, setSuc]  = useState(false);
-  const [erro, setErro]    = useState("");
+  const [form, setForm] = useState({ nome: "", email: "", telefone: "", assunto: "", mensagem: "" });
+  const [loading, setLoading] = useState(false);
+  const [sucesso, setSucesso] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoad(true);
-    setErro("");
+    setLoading(true);
     try {
-      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, { ...form }, EMAILJS_PUBLIC_KEY);
-      setSuc(true);
-      setForm({ nome: "", email: "", telefone: "", mensagem: "" });
-    } catch {
-      setErro("Ocorreu um erro ao enviar a mensagem. Tente novamente.");
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form, EMAILJS_PUBLIC_KEY);
+      setSucesso(true);
+      setForm({ nome: "", email: "", telefone: "", assunto: "", mensagem: "" });
+    } catch (error) {
+      alert("Erro ao enviar. Tente novamente.");
     } finally {
-      setLoad(false);
+      setLoading(false);
     }
   };
 
-  const inputStyle: React.CSSProperties = {
-    width: "100%",
-    padding: "0.75rem 1rem",
-    borderRadius: "10px",
-    border: "1.5px solid hsl(var(--border))",
-    background: "hsl(var(--background))",
-    color: "hsl(var(--foreground))",
-    fontSize: "0.95rem",
-    outline: "none",
-    transition: "border-color 0.2s",
-    fontFamily: "sans",
-  };
-
-  const labelStyle: React.CSSProperties = {
-    display: "block",
-    fontSize: "0.85rem",
-    fontWeight: 600,
-    marginBottom: "0.4rem",
-    color: "hsl(var(--foreground))",
-    fontFamily: "sans",
-  };
-
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-background font-sans">
       <Header />
-
       <main className="flex-1">
-
-        {/* Hero */}
-        <section className="bg-gradient-primary py-20">
-          <div className="container">
-            <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
-                Fale Conosco
-              </h1>
-              <p className="text-lg text-primary-foreground/90">
-                Entre em contato com o Observatório de Indicadores Culturais e Inovação em Dados
-              </p>
-            </div>
+        <section className="bg-gradient-primary py-16 text-center text-white">
+          <div className="container px-4">
+            <h1 className="text-3xl md:text-5xl font-bold mb-4">Fale Conosco</h1>
+            <p className="opacity-90">Dúvidas ou sugestões? Nossa equipe está pronta para ajudar.</p>
           </div>
         </section>
 
-        {/* Conteúdo */}
-        <section className="py-20 bg-background">
-          <div className="container">
-            <div style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 2fr",
-              gap: "4rem",
-              alignItems: "start",
-              maxWidth: "1100px",
-              margin: "0 auto",
-            }}>
-
-              {/* ════ Coluna de informações ════ */}
-              <div style={{ display: "flex", flexDirection: "column", gap: "1.75rem" }}>
-
+        <section className="py-12 md:py-20">
+          <div className="container px-4 max-w-6xl mx-auto">
+            <div className="flex flex-col lg:flex-row gap-12">
+              
+              {/* Coluna Informações */}
+              <div className="lg:w-1/3 space-y-8">
                 <div>
-                  <h2 style={{ font: "sans", fontSize: "1.5rem", fontWeight: 700, marginBottom: "1rem" }}>
-                    Informações
-                  </h2>
-                  <p style={{ font: "sans", fontSize: "0.95rem", color: "hsl(var(--muted-foreground))", lineHeight: 1.7 }}>
-                    Estamos disponíveis para responder dúvidas, receber sugestões e colaborar com pesquisas sobre políticas culturais.
-                  </p>
-                </div>
-
-                {/* Endereço */}
-                <div style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem" }}>
-                  <div style={{ padding: "0.6rem", borderRadius: "8px", background: "hsl(var(--primary)/0.1)", flexShrink: 0 }}>
-                    <MapPin style={{ width: 18, height: 18, color: "hsl(var(--primary))" }} />
-                  </div>
-                  <div>
-                    <p style={{ fontWeight: 600, fontSize: "0.85rem", marginBottom: "0.2rem", font: "sans" }}>Endereço</p>
-                    <a
-                      href="https://www.google.com/maps/search/?api=1&query=R.+José+de+Alencar,+388+Boa+Vista+Recife+PE"
-                      target="_blank" rel="noreferrer"
-                      style={{ fontSize: "0.85rem", color: "hsl(var(--muted-foreground))", textDecoration: "none", font: "sans" }}
-                    >
-                      R. José de Alencar, 388 - Boa Vista<br />Recife - PE, 50070-030
-                    </a>
+                  <h2 className="text-2xl font-bold mb-4">Contato Direto</h2>
+                  <p className="text-muted-foreground mb-6">Utilize o formulário ou nossos canais oficiais.</p>
+                  
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-4 p-4 rounded-xl bg-muted/50">
+                      <MapPin className="text-primary w-6 h-6" />
+                      <span className="text-sm">R. José de Alencar, 388 - Recife/PE</span>
+                    </div>
+                    <div className="flex items-center gap-4 p-4 rounded-xl bg-muted/50">
+                      <Mail className="text-primary w-6 h-6" />
+                      <span className="text-sm">observatorio@secult.pe.gov.br</span>
+                    </div>
                   </div>
                 </div>
 
-                {/* E-mail */}
-                <div style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem" }}>
-                  <div style={{ padding: "0.6rem", borderRadius: "8px", background: "hsl(var(--primary)/0.1)", flexShrink: 0 }}>
-                    <Mail style={{ width: 18, height: 18, color: "hsl(var(--primary))" }} />
-                  </div>
-                  <div>
-                    <p style={{ fontWeight: 600, fontSize: "0.85rem", marginBottom: "0.2rem", font: "sans" }}>E-mail</p>
-                    <a
-                      href="mailto:observatorio@secult.pe.gov.br"
-                      style={{ fontSize: "0.85rem", color: "hsl(var(--muted-foreground))", textDecoration: "none", font: "sans" }}
-                    >
-                      observatorio@secult.pe.gov.br
-                    </a>
-                  </div>
-                </div>
-
-                {/* Divisor */}
-                <hr style={{ border: "none", borderTop: "1px solid hsl(var(--border))", margin: 0 }} />
-
-                {/* ── WhatsApp — canal direto, separado do formulário ── */}
-                <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}>
-                 
-                  <a
-                    href={WHATSAPP_URL}
-                    target="_blank"
-                    rel="noreferrer"
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      gap: "0.6rem",
-                      padding: "0.8rem 1.25rem",
-                      borderRadius: "10px",
-                      background: "#25D366",
-                      color: "#fff",
-                      font: "sans",
-                      fontWeight: 700,
-                      fontSize: "0.95rem",
-                      textDecoration: "none",
-                      boxShadow: "0 4px 16px rgba(37,211,102,0.3)",
-                      transition: "opacity 0.2s, transform 0.15s",
-                    }}
-                    onMouseEnter={e => { e.currentTarget.style.opacity = "0.9"; e.currentTarget.style.transform = "translateY(-1px)"; }}
-                    onMouseLeave={e => { e.currentTarget.style.opacity = "1"; e.currentTarget.style.transform = "translateY(0)"; }}
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style={{ width: 20, height: 20, flexShrink: 0 }}>
-                      <path d="https://wa.me/5581984942007?text=Olá%20vim%20do%20Site%20do%20Observatório%20de%20Indicadores%20Culturais"/>
-                    </svg>
-                    Falar pelo WhatsApp
-                  </a>
-                </div>
+                <a
+                  href="https://wa.me/5581984942007"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center justify-center gap-3 w-full p-4 bg-[#25D366] text-white rounded-xl font-bold shadow-lg hover:scale-[1.02] transition-transform"
+                >
+                  <MessageCircle className="w-6 h-6" />
+                  Conversar via WhatsApp
+                </a>
               </div>
 
-              {/* email */}
-              <div style={{
-                background: "hsl(var(--card))",
-                borderRadius: "16px",
-                padding: "2.5rem",
-                border: "1px solid hsl(var(--border))",
-                boxShadow: "0 4px 24px rgba(0,0,0,0.06)",
-              }}>
+              {/* Coluna Formulário */}
+              <div className="lg:w-2/3 bg-card border rounded-2xl p-6 md:p-10 shadow-sm">
                 {sucesso ? (
-                  <div style={{ textAlign: "center", padding: "2rem 0" }}>
-                    <CheckCircle style={{ width: 56, height: 56, color: "#16a34a", margin: "0 auto 1rem" }} />
-                    <h3 style={{ font: "sans", fontSize: "1.3rem", fontWeight: 700, marginBottom: "0.5rem" }}>
-                      Mensagem enviada!
-                    </h3>
-                    <p style={{ font: "sans", color: "hsl(var(--muted-foreground))", fontSize: "0.95rem" }}>
-                      Obrigado pelo contato. Retornaremos em breve.
-                    </p>
-                    <button
-                      onClick={() => setSuc(false)}
-                      style={{
-                        marginTop: "1.5rem", padding: "0.6rem 1.5rem", borderRadius: "8px",
-                        background: "hsl(var(--primary))", color: "hsl(var(--primary-foreground))",
-                        border: "none", cursor: "pointer", fontWeight: 600, font: "sans",
-                      }}
-                    >
-                      Enviar outra mensagem
-                    </button>
+                  <div className="text-center py-12">
+                    <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
+                    <h3 className="text-2xl font-bold mb-2">Enviado com sucesso!</h3>
+                    <button onClick={() => setSucesso(false)} className="text-primary font-semibold underline">Enviar nova mensagem</button>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-                    <h2 style={{ font: "sans", fontSize: "1.4rem", fontWeight: 700, marginBottom: "0.5rem" }}>
-                      Envie uma mensagem
-                    </h2>
-
-                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
-                      <div>
-                        <label style={labelStyle}>Nome *</label>
-                        <input type="text" name="nome" value={form.nome} onChange={handleChange} required
-                          placeholder="Seu nome completo" style={inputStyle}
-                          onFocus={e => (e.target.style.borderColor = "hsl(var(--primary))")}
-                          onBlur={e => (e.target.style.borderColor = "hsl(var(--border))")} />
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                      <div className="space-y-2">
+                        <label className="text-sm font-bold">Nome Completo *</label>
+                        <input name="nome" value={form.nome} onChange={handleChange} required className="w-full p-3 rounded-lg border bg-background" placeholder="Nome Completo" />
                       </div>
-                      <div>
-                        <label style={labelStyle}>E-mail *</label>
-                        <input type="email" name="email" value={form.email} onChange={handleChange} required
-                          placeholder="seu@email.com" style={inputStyle}
-                          onFocus={e => (e.target.style.borderColor = "hsl(var(--primary))")}
-                          onBlur={e => (e.target.style.borderColor = "hsl(var(--border))")} />
+                      <div className="space-y-2">
+                        <label className="text-sm font-bold">E-mail *</label>
+                        <input name="email" type="email" value={form.email} onChange={handleChange} required className="w-full p-3 rounded-lg border bg-background" placeholder="E-Mail" />
                       </div>
                     </div>
 
-                    <div>
-                      <label style={labelStyle}>Telefone</label>
-                      <input type="tel" name="telefone" value={form.telefone} onChange={handleChange}
-                        placeholder="(DDD) 99999-9999" style={inputStyle}
-                        onFocus={e => (e.target.style.borderColor = "hsl(var(--primary))")}
-                        onBlur={e => (e.target.style.borderColor = "hsl(var(--border))")} />
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                      <div className="space-y-2">
+                        <label className="text-sm font-bold">Telefone</label>
+                        <input name="telefone" value={form.telefone} onChange={handleChange} className="w-full p-3 rounded-lg border bg-background" placeholder="Telefone" />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-sm font-bold">Assunto *</label>
+                        <input name="assunto" value={form.assunto} onChange={handleChange} required className="w-full p-3 rounded-lg border bg-background" placeholder="Assunto" />
+                      </div>
                     </div>
 
-                    <div>
-                      <label style={labelStyle}>Mensagem *</label>
-                      <textarea name="mensagem" value={form.mensagem} onChange={handleChange} required
-                        placeholder="Escreva sua mensagem..." rows={5}
-                        style={{ ...inputStyle, resize: "vertical" }}
-                        onFocus={e => (e.target.style.borderColor = "hsl(var(--primary))")}
-                        onBlur={e => (e.target.style.borderColor = "hsl(var(--border))")} />
+                    <div className="space-y-2">
+                      <label className="text-sm font-bold">Mensagem *</label>
+                      <textarea name="mensagem" value={form.mensagem} onChange={handleChange} required rows={5} className="w-full p-3 rounded-lg border bg-background resize-none" placeholder="Escreva sua mensagem." />
                     </div>
 
-                    {erro && (
-                      <p style={{ color: "#c0392b", fontSize: "0.85rem", font: "sans" }}>{erro}</p>
-                    )}
-
-                    {/* Enviar — exclusivo do formulário, alinhado à direita */}
-                    <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                      <button
-                        type="submit"
-                        disabled={loading}
-                        style={{
-                          display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "0.5rem",
-                          padding: "0.75rem 2rem", borderRadius: "10px", border: "none",
-                          background: loading ? "hsl(var(--muted))" : "hsl(var(--primary))",
-                          color: loading ? "hsl(var(--muted-foreground))" : "hsl(var(--primary-foreground))",
-                          fontWeight: 700, fontSize: "0.95rem",
-                          cursor: loading ? "not-allowed" : "pointer",
-                          font: "sans",
-                          transition: "opacity 0.2s",
-                        }}
-                      >
-                        {loading ? "Enviando..." : (
-                          <>
-                            <Send style={{ width: 16, height: 16 }} />
-                            Enviar mensagem
-                          </>
-                        )}
-                      </button>
-                    </div>
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      className="w-full md:w-max px-10 py-4 bg-primary text-white rounded-lg font-bold hover:opacity-90 disabled:opacity-50 flex items-center justify-center gap-2"
+                    >
+                      {loading ? "Enviando..." : <><Send className="w-4 h-4" /> Enviar Mensagem</>}
+                    </button>
                   </form>
                 )}
               </div>
@@ -275,7 +126,6 @@ const Contato = () => {
           </div>
         </section>
       </main>
-
       <Footer />
     </div>
   );
