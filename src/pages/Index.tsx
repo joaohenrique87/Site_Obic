@@ -4,35 +4,17 @@ import Hero from "@/components/Hero";
 import { Link } from "react-router-dom";
 import CarrosselRelatorio from "@/CarrosselRelatorio.jsx";
 import QuemSomosSection from "@/components/QuemSomosSection.jsx";
+
+// REMOVIDO: import logosParceiros from "../assets/regua.png";
+
 import pnab from "@/assets/pnab.png";
 import lpg from "@/assets/lpg.jpeg";
 import rouanet from "@/assets/rouanet.png";
-import fundarpe from "@/assets/FUNDARPE.png";
-import fundaj from "@/assets/FUNDAJ.png";
-import sebrae from "@/assets/SEBRAE.png";
-import rbot from "@/assets/RBOT.png";
-import ufpe from "@/assets/UFPE.png";
 
 const dashboards = [
   { href: "/cultura-em-numeros?tab=PNAB", img: pnab, alt: "Dashboard PNAB" },
-  {
-    href: "/cultura-em-numeros?tab=lpg",
-    img: lpg,
-    alt: "Dashboard Lei Paulo Gustavo",
-  },
-  {
-    href: "/cultura-em-numeros?tab=rouanet",
-    img: rouanet,
-    alt: "Dashboard Lei Rouanet em Pernambuco",
-  },
-];
-
-const parceiros = [
-  { img: fundarpe, alt: "Fundarpe" },
-  { img: fundaj, alt: "Fundação Joaquim Nabuco" },
-  { img: sebrae, alt: "Sebrae" },
-  { img: rbot, alt: "RBOT" },
-  { img: ufpe, alt: "UFPE" },
+  { href: "/cultura-em-numeros?tab=lpg", img: lpg, alt: "Dashboard Lei Paulo Gustavo" },
+  { href: "/cultura-em-numeros?tab=rouanet", img: rouanet, alt: "Dashboard Lei Rouanet em Pernambuco" },
 ];
 
 const Index = () => {
@@ -41,11 +23,12 @@ const Index = () => {
       <Header />
       <main className="flex-1">
         <Hero />
-
-        <QuemSomosSection />
+        <div className="shadow-inner border-b border-black/5">
+          <QuemSomosSection />
+        </div>
 
         {/* Painéis de Dados */}
-        <section className="py-20 bg-background">
+        <section className="py-20 bg-background relative z-10 shadow-[0_-10px_20px_-15px_rgba(0,0,0,0.1)]">
           <div className="max-w-[1600px] mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -85,23 +68,18 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Parceiros — mesmo fundo da seção anterior, sem gap */}
-        {/* Parceiros — fundo branco para as logos sem transparência */}
+        {/* Parceiros — Usando a pasta public para evitar erros de import */}
         <section className="bg-white py-16 border-t border-border">
-          <div className="max-w-6xl mx-auto px-6">
-            <h2 className="text-primary text-3xl md:text-4xl font-bold text-center mb-12">
+          <div className="max-w-5xl mx-auto px-6 text-center">
+            <h2 className="text-primary text-3xl md:text-4xl font-bold mb-12">
               Parceiros
             </h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
-              {parceiros.map((p) => (
-                <div key={p.alt} className="flex items-center justify-center p-4 h-24">
-                  <img
-                    src={p.img}
-                    alt={p.alt}
-                    className="max-h-full max-w-full object-contain opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110"
-                  />
-                </div>
-              ))}
+            <div className="flex items-center justify-center p-4">
+              <img
+                src= "src/assets/regua.png" 
+                alt="Nossos Parceiros"
+                className="w-full max-w-4xl h-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+              />
             </div>
           </div>
         </section>

@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { fetchTodosRelatorios } from "@/service/supabase";
+import { fetchRelatorios } from "@/service/supabase";
 import { FileText, Download, Eye, Search } from "lucide-react";
 
 const CATEGORIAS = [
   { value: "todos", label: "Todos" },
-  { value: "lpg",     label: "LPG" },
-  { value: "pnab",    label: "PNAB" },
-  { value: "lab",     label: "LAB" },
+  { value: "lpg", label: "LPG" },
+  { value: "pnab", label: "PNAB" },
   { value: "premios", label: "Prêmios" },
 ];
 
@@ -19,7 +18,7 @@ const handleDownload = async (url: string, nome: string) => {
     const blobUrl = window.URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = blobUrl;
-    link.download = `${nome}.pdf`;
+    link.download = `${nome.split('/').pop()}`; // Garante nome limpo no download
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -37,16 +36,37 @@ const RelatoriosPDF = () => {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   useEffect(() => {
-    fetchTodosRelatorios().then((data) => {
-      setTodos(data);
+    fetchRelatorios().then((data) => {
+      console.log("Dados consolidados:", data);
+      setTodos(data || []);
       setLoading(false);
     });
   }, []);
 
   const filtrados = todos.filter((arq) => {
-    const matchBusca = arq.nome.toLowerCase().includes(busca.toLowerCase());
-    const matchCategoria = categoriaAtiva === "todos" || arq.categoria === categoriaAtiva;
-    return matchBusca && matchCategoria;
+    const caminhoCompleto = arq?.nome_arquivo || "";
+    
+    // 1. Extrair categoria pela pasta (ex: "PNAB/arquivo.pdf" -> "pnab")
+    const pastaRaiz = caminhoCompleto.split('/')[0].toLowerCase();
+    
+    // 2. Limpar o nome para exibição (apenas o arquivo final)
+    const nomeExibicao = caminhoCompleto.split('/').pop() || "";
+
+    // 3. Mapear nomes das pastas para os valores dos botões (pills)
+    const mapCategorias: Record<string, string> = {
+      "premios": "premios",
+      "pnab": "pnab",
+      "lpg": "lpg",
+      "lab": "lab"
+    };
+    const categoriaIdentificada = mapCategorias[pastaRaiz] || pastaRaiz;
+
+    // 4. Aplicar Filtros
+    const matchBusca = nomeExibicao.toLowerCase().includes(busca.toLowerCase());
+    const matchCategoria = categoriaAtiva === "todos" || categoriaIdentificada === categoriaAtiva;
+    const isSystemFile = nomeExibicao.includes('.empty'); // Remove arquivos vazios do Supabase
+
+    return matchBusca && matchCategoria && !isSystemFile;
   });
 
   return (
@@ -80,17 +100,11 @@ const RelatoriosPDF = () => {
             <button
               key={cat.value}
               onClick={() => setCategoriaAtiva(cat.value)}
+              className="px-5 py-2 rounded-full border-2 font-semibold text-sm transition-all duration-200"
               style={{
-                padding: '0.4rem 1.2rem',
-                borderRadius: '999px',
-                border: '2px solid',
                 borderColor: categoriaAtiva === cat.value ? 'hsl(var(--primary))' : 'hsl(var(--border))',
                 background: categoriaAtiva === cat.value ? 'hsl(var(--primary))' : 'transparent',
                 color: categoriaAtiva === cat.value ? 'hsl(var(--primary-foreground))' : 'hsl(var(--foreground))',
-                fontWeight: 600,
-                fontSize: '0.85rem',
-                cursor: 'pointer',
-                transition: 'all 0.2s',
               }}
             >
               {cat.label}
@@ -100,11 +114,11 @@ const RelatoriosPDF = () => {
 
         {/* Lista de relatórios */}
         {loading ? (
-          <div className="text-center py-20 text-muted-foreground">Carregando relatórios...</div>
+          <div className="text-center py-20 text-muted-foreground animate-pulse">Carregando relatórios...</div>
         ) : filtrados.length === 0 ? (
           <div className="text-center py-20 text-muted-foreground">
             <FileText className="mx-auto h-12 w-12 mb-4 opacity-40" />
-            <p>Nenhum relatório encontrado.</p>
+            <p>Nenhum relatório encontrado para "{busca}" em {categoriaAtiva.toUpperCase()}.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -121,25 +135,17 @@ const RelatoriosPDF = () => {
                   </div>
                   <div className="flex-1 min-w-0">
                     <h3 className="font-semibold text-foreground mb-1 line-clamp-2 capitalize text-sm">
-                      {arq.nome}
+                      {/* Exibe apenas o nome final do arquivo */}
+                      {arq.nome_arquivo?.split('/').pop()}
                     </h3>
                     <div className="flex items-center gap-2">
                       <p className="text-xs text-muted-foreground">
                         {new Date(arq.created_at).toLocaleDateString("pt-BR")}
                       </p>
-                      {arq.categoria && (
-                        <span style={{
-                          fontSize: '0.7rem',
-                          fontWeight: 700,
-                          padding: '0.1rem 0.5rem',
-                          borderRadius: '999px',
-                          background: 'hsl(var(--primary)/0.1)',
-                          color: 'hsl(var(--primary))',
-                          textTransform: 'uppercase',
-                        }}>
-                          {arq.categoria}
-                        </span>
-                      )}
+                      {/* Exibe a pasta como uma tag */}
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-primary/10 text-primary uppercase">
+                         {arq.nome_arquivo?.split('/')[0]}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -147,25 +153,15 @@ const RelatoriosPDF = () => {
                 {/* Botões no hover */}
                 <div className={`absolute inset-0 bg-background/95 flex items-center justify-center gap-3 transition-opacity duration-300 ${hoveredId === arq.id ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
                   <button
-                    onClick={() => window.open(arq.linkPreview, "_blank")}
-                    style={{
-                      display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
-                      padding: '0.5rem 1rem', borderRadius: '8px', border: 'none',
-                      background: '#6d28d9', color: '#fff', fontWeight: 600,
-                      fontSize: '0.85rem', cursor: 'pointer',
-                    }}
+                    onClick={() => window.open(arq.linkDownload, "_blank")} // Usando linkDownload para visualização também
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground font-semibold text-xs hover:brightness-110 transition-all"
                   >
                     <Eye className="h-4 w-4" />
                     Visualizar
                   </button>
                   <button
-                    onClick={() => handleDownload(arq.linkDownload, arq.nome)}
-                    style={{
-                      display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
-                      padding: '0.5rem 1rem', borderRadius: '8px', border: 'none',
-                      background: '#16a34a', color: '#fff', fontWeight: 600,
-                      fontSize: '0.85rem', cursor: 'pointer',
-                    }}
+                    onClick={() => handleDownload(arq.linkDownload, arq.nome_arquivo)}
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-green-600 text-white font-semibold text-xs hover:bg-green-700 transition-all"
                   >
                     <Download className="h-4 w-4" />
                     Download

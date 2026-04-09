@@ -39,7 +39,7 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
         
-        <Whatsapp />
+        
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
