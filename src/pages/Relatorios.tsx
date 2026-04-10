@@ -18,7 +18,7 @@ const handleDownload = async (url: string, nome: string) => {
     const blobUrl = window.URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = blobUrl;
-    link.download = `${nome.split('/').pop()}`; // Garante nome limpo no download
+    link.download = `${nome.split('/').pop()}`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -37,7 +37,6 @@ const RelatoriosPDF = () => {
 
   useEffect(() => {
     fetchRelatorios().then((data) => {
-      console.log("Dados consolidados:", data);
       setTodos(data || []);
       setLoading(false);
     });
@@ -45,14 +44,9 @@ const RelatoriosPDF = () => {
 
   const filtrados = todos.filter((arq) => {
     const caminhoCompleto = arq?.nome_arquivo || "";
-    
-    // 1. Extrair categoria pela pasta (ex: "PNAB/arquivo.pdf" -> "pnab")
     const pastaRaiz = caminhoCompleto.split('/')[0].toLowerCase();
-    
-    // 2. Limpar o nome para exibição (apenas o arquivo final)
     const nomeExibicao = caminhoCompleto.split('/').pop() || "";
 
-    // 3. Mapear nomes das pastas para os valores dos botões (pills)
     const mapCategorias: Record<string, string> = {
       "premios": "premios",
       "pnab": "pnab",
@@ -61,10 +55,9 @@ const RelatoriosPDF = () => {
     };
     const categoriaIdentificada = mapCategorias[pastaRaiz] || pastaRaiz;
 
-    // 4. Aplicar Filtros
     const matchBusca = nomeExibicao.toLowerCase().includes(busca.toLowerCase());
     const matchCategoria = categoriaAtiva === "todos" || categoriaIdentificada === categoriaAtiva;
-    const isSystemFile = nomeExibicao.includes('.empty'); // Remove arquivos vazios do Supabase
+    const isSystemFile = nomeExibicao.includes('.empty');
 
     return matchBusca && matchCategoria && !isSystemFile;
   });
@@ -72,18 +65,18 @@ const RelatoriosPDF = () => {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Header />
-      <main className="flex-1 container py-12">
+      <main className="flex-1 container py-8 md:py-12 px-4">
 
         {/* Cabeçalho */}
-        <div className="text-center mb-10">
-          <h1 className="text-4xl font-bold text-foreground mb-4">Relatórios em PDF</h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        <div className="text-center mb-8 md:mb-10">
+          <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-3 md:mb-4">Relatórios em PDF</h1>
+          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
             Pesquise e filtre nossos relatórios por categoria
           </p>
         </div>
 
         {/* Busca */}
-        <div className="relative max-w-xl mx-auto mb-8">
+        <div className="relative max-w-xl mx-auto mb-6 md:mb-8">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <input
             type="text"
@@ -95,12 +88,12 @@ const RelatoriosPDF = () => {
         </div>
 
         {/* Pills de categoria */}
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
+        <div className="flex flex-wrap justify-center gap-2 mb-8 md:mb-10">
           {CATEGORIAS.map((cat) => (
             <button
               key={cat.value}
               onClick={() => setCategoriaAtiva(cat.value)}
-              className="px-5 py-2 rounded-full border-2 font-semibold text-sm transition-all duration-200"
+              className="px-4 md:px-5 py-2 rounded-full border-2 font-semibold text-sm transition-all duration-200"
               style={{
                 borderColor: categoriaAtiva === cat.value ? 'hsl(var(--primary))' : 'hsl(var(--border))',
                 background: categoriaAtiva === cat.value ? 'hsl(var(--primary))' : 'transparent',
@@ -121,7 +114,7 @@ const RelatoriosPDF = () => {
             <p>Nenhum relatório encontrado para "{busca}" em {categoriaAtiva.toUpperCase()}.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {filtrados.map((arq) => (
               <div
                 key={arq.id}
@@ -129,42 +122,48 @@ const RelatoriosPDF = () => {
                 onMouseEnter={() => setHoveredId(arq.id)}
                 onMouseLeave={() => setHoveredId(null)}
               >
-                <div className="p-5 flex items-start gap-4">
-                  <div className="p-3 bg-primary/10 rounded-lg flex-shrink-0">
-                    <FileText className="h-6 w-6 text-primary" />
+                <div className="p-4 md:p-5 flex items-start gap-3 md:gap-4">
+                  <div className="p-2.5 md:p-3 bg-primary/10 rounded-lg flex-shrink-0">
+                    <FileText className="h-5 w-5 md:h-6 md:w-6 text-primary" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-semibold text-foreground mb-1 line-clamp-2 capitalize text-sm">
-                      {/* Exibe apenas o nome final do arquivo */}
+                    <h3 className="font-semibold text-foreground mb-1 line-clamp-2 capitalize text-xs md:text-sm">
                       {arq.nome_arquivo?.split('/').pop()}
                     </h3>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 flex-wrap">
                       <p className="text-xs text-muted-foreground">
                         {new Date(arq.created_at).toLocaleDateString("pt-BR")}
                       </p>
-                      {/* Exibe a pasta como uma tag */}
                       <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-primary/10 text-primary uppercase">
-                         {arq.nome_arquivo?.split('/')[0]}
+                        {arq.nome_arquivo?.split('/')[0]}
                       </span>
                     </div>
                   </div>
                 </div>
 
-                {/* Botões no hover */}
-                <div className={`absolute inset-0 bg-background/95 flex items-center justify-center gap-3 transition-opacity duration-300 ${hoveredId === arq.id ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+                {/* Botões sempre visíveis em mobile, hover no desktop */}
+                <div className={`
+                  flex items-center justify-end gap-2 px-4 pb-3
+                  md:absolute md:inset-0 md:bg-background/95 md:justify-center md:px-0 md:pb-0
+                  md:transition-opacity md:duration-300
+                  ${hoveredId === arq.id ? 'md:opacity-100' : 'md:opacity-0 md:pointer-events-none'}
+                `}>
                   <button
-                    onClick={() => window.open(arq.linkDownload, "_blank")} // Usando linkDownload para visualização também
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground font-semibold text-xs hover:brightness-110 transition-all"
+                    onClick={() => window.open(arq.linkDownload, "_blank")}
+                    className="inline-flex items-center gap-1.5 md:gap-2 px-3 md:px-4 py-2 rounded-lg font-semibold text-xs transition-all"
+                    style={{ background: 'hsl(var(--primary))', color: 'white' }}
+                    title="Visualizar"
                   >
-                    <Eye className="h-4 w-4" />
-                    Visualizar
+                    <Eye className="h-3.5 w-3.5 md:h-4 md:w-4" />
+                    <span className="hidden sm:inline">Visualizar</span>
                   </button>
                   <button
                     onClick={() => handleDownload(arq.linkDownload, arq.nome_arquivo)}
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-green-600 text-white font-semibold text-xs hover:bg-green-700 transition-all"
+                    className="inline-flex items-center gap-1.5 md:gap-2 px-3 md:px-4 py-2 rounded-lg bg-green-600 text-white font-semibold text-xs hover:bg-green-700 transition-all"
+                    title="Download"
                   >
-                    <Download className="h-4 w-4" />
-                    Download
+                    <Download className="h-3.5 w-3.5 md:h-4 md:w-4" />
+                    <span className="hidden sm:inline">Download</span>
                   </button>
                 </div>
               </div>

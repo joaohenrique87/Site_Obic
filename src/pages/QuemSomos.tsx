@@ -93,12 +93,13 @@ const QuemSomos = () => {
                 setor cultural, como o mapeamento de agentes e equipamentos
                 culturais.
               </p>
-              {/* Mission, Vision, Values, Objectives */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
-                <div className="bg-muted rounded-2xl p-8 border border-border">
+                
+                {/* Missão */}
+                <div className="bg-card rounded-2xl p-8 border border-border shadow-soft">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="h-12 w-12 rounded-lg bg-gradient-primary flex items-center justify-center">
-                      <Target className="h-6 w-6 text-primary-foreground" />
+                      <Target className="h-6 w-6 text-white" />
                     </div>
                     <h2 className="text-2xl font-bold text-foreground">
                       Missão
@@ -113,26 +114,28 @@ const QuemSomos = () => {
                   </p>
                 </div>
 
-                <div className="bg-muted rounded-2xl p-8 border border-border">
+                {/* Visão */}
+                <div className="bg-card rounded-2xl p-8 border border-border shadow-soft">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="h-12 w-12 rounded-lg bg-gradient-accent flex items-center justify-center">
-                      <Eye className="h-6 w-6 text-accent-foreground" />
+                      <Eye className="h-6 w-6 text-white" />
                     </div>
                     <h2 className="text-2xl font-bold text-foreground">
                       Visão
                     </h2>
                   </div>
-                  <p className="text-muted-foreground leading-relaxed ">
+                  <p className="text-muted-foreground leading-relaxed">
                     Institucionalizar o monitoramento e a coleta sistemática de
                     dados e informações da cultura, buscando criar uma gestão
                     orientada por dados para tomada de decisão até 2026.
                   </p>
                 </div>
 
-                <div className="bg-muted rounded-2xl p-8 border border-border">
+                {/* Valores */}
+                <div className="bg-card rounded-2xl p-8 border border-border shadow-soft">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="h-12 w-12 rounded-lg bg-gradient-primary flex items-center justify-center">
-                      <Heart className="h-6 w-6 text-primary-foreground" />
+                      <Heart className="h-6 w-6 text-white" />
                     </div>
                     <h2 className="text-2xl font-bold text-foreground">
                       Valores
@@ -144,10 +147,11 @@ const QuemSomos = () => {
                   </p>
                 </div>
 
-                <div className="bg-muted rounded-2xl p-8 border border-border">
+                {/* Objetivos */}
+                <div className="bg-card rounded-2xl p-8 border border-border shadow-soft">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="h-12 w-12 rounded-lg bg-gradient-accent flex items-center justify-center">
-                      <Lightbulb className="h-6 w-6 text-accent-foreground" />
+                      <Lightbulb className="h-6 w-6 text-white" />
                     </div>
                     <h2 className="text-2xl font-bold text-foreground">
                       Objetivos
@@ -159,6 +163,7 @@ const QuemSomos = () => {
                     no estado de Pernambuco.
                   </p>
                 </div>
+
               </div>
             </div>
           </div>
