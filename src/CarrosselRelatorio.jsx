@@ -3,15 +3,10 @@ import { fetchRelatorios } from "./service/supabase";
 import { Loader2, ChevronLeft, ChevronRight } from "lucide-react";
 import "./Carrossel.css";
 
-// ─── CORREÇÃO PRINCIPAL ──────────────────────────────────────────────────────
-// Importa o worker diretamente do pacote instalado, garantindo que a versão
-// do worker sempre bate com a versão do pdfjs-dist no projeto.
-// Evita o erro 404 que ocorria ao buscar o worker de um CDN com versão diferente.
 import * as pdfjsLib from "pdfjs-dist";
 import PdfWorker from "pdfjs-dist/build/pdf.worker?url";
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = PdfWorker;
-// ─────────────────────────────────────────────────────────────────────────────
 
 const PdfCard = ({ arq }) => {
   const canvasRef = useRef(null);
@@ -23,7 +18,9 @@ const PdfCard = ({ arq }) => {
 
     const renderCapa = async () => {
       try {
-        const urlPdf = encodeURI(arq.linkDownload);
+        // A URL já vem encodada corretamente do service — não aplicar encodeURI aqui,
+        // pois double-encode quebraria os %XX já existentes na URL.
+        const urlPdf = arq.linkDownload;
         if (!urlPdf) throw new Error("Link não encontrado");
 
         const loadingTask = pdfjsLib.getDocument({
@@ -34,7 +31,6 @@ const PdfCard = ({ arq }) => {
           disableStream: true,
         });
 
-        // ─── PARTE QUE ESTAVA FALTANDO NO CÓDIGO ORIGINAL ───────────────────
         const pdf = await loadingTask.promise;
         const page = await pdf.getPage(1);
 
@@ -48,7 +44,6 @@ const PdfCard = ({ arq }) => {
         canvas.height = viewport.height;
 
         await page.render({ canvasContext: context, viewport }).promise;
-        // ────────────────────────────────────────────────────────────────────
 
         if (!cancelled) setLoaded(true);
       } catch (error) {
@@ -58,23 +53,16 @@ const PdfCard = ({ arq }) => {
     };
 
     renderCapa();
-
-    return () => {
-      cancelled = true;
-    };
+    return () => { cancelled = true; };
   }, [arq]);
 
   return (
     <div className="card-relatorio">
       <div className="card-capa">
         {!loaded && !erro && (
-          <div className="capa-placeholder">
-            <Loader2 className="animate-spin" />
-          </div>
+          <div className="capa-placeholder"><Loader2 className="animate-spin" /></div>
         )}
-
         {erro && <div className="capa-erro">PDF</div>}
-
         <canvas
           ref={canvasRef}
           className="canvas-pdf"
@@ -84,17 +72,10 @@ const PdfCard = ({ arq }) => {
 
       <div className="card-info">
         <h3>{arq.nome_arquivo?.split("/").pop()}</h3>
-
         <div className="acoes">
-          <a
-            href={arq.linkDownload}
-            target="_blank"
-            rel="noreferrer"
-            className="btn visualizar"
-          >
+          <a href={arq.linkDownload} target="_blank" rel="noreferrer" className="btn visualizar">
             Visualizar
           </a>
-
           <a href={arq.linkDownload} download className="btn baixar">
             Download
           </a>
@@ -122,25 +103,16 @@ const CarrosselRelatorio = () => {
   }, []);
 
   if (loading)
-    return (
-      <div className="loading">
-        <Loader2 className="animate-spin" />
-      </div>
-    );
+    return <div className="loading"><Loader2 className="animate-spin" /></div>;
 
   const visiveis = 4;
   const maxIndex = Math.max(0, arquivos.length - visiveis);
-
   const next = () => setIndex((i) => Math.min(maxIndex, i + 1));
   const prev = () => setIndex((i) => Math.max(0, i - 1));
 
   return (
     <div className="container-carrossel">
-      <button
-        className="seta esquerda"
-        onClick={prev}
-        disabled={index === 0}
-      >
+      <button className="seta esquerda" onClick={prev} disabled={index === 0}>
         <ChevronLeft size={26} />
       </button>
 
@@ -150,22 +122,14 @@ const CarrosselRelatorio = () => {
           style={{ transform: `translateX(-${index * (100 / visiveis)}%)` }}
         >
           {arquivos.map((arq) => (
-            <div
-              key={arq.id}
-              className="carrossel-item"
-              style={{ width: `${100 / visiveis}%` }}
-            >
+            <div key={arq.id} className="carrossel-item" style={{ width: `${100 / visiveis}%` }}>
               <PdfCard arq={arq} />
             </div>
           ))}
         </div>
       </div>
 
-      <button
-        className="seta direita"
-        onClick={next}
-        disabled={index >= maxIndex}
-      >
+      <button className="seta direita" onClick={next} disabled={index >= maxIndex}>
         <ChevronRight size={26} />
       </button>
     </div>

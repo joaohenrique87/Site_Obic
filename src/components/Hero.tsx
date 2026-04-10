@@ -53,10 +53,10 @@ const Hero = () => {
       <div className="container relative z-30 px-6">
         <div className="mx-auto max-w-4xl text-center">
           <h1 className="mb-4 text-xl font-bold tracking-tight text-white sm:text-2xl md:text-4xl max-w-2xl mx-auto opacity-50">
-            Observatório de Indicadores Culturais e Inovação em Dados
+            Observatório de Indicadores Culturais e Inovação em Dados de Pernambuco
           </h1>
           <p className="mb-8 text-xs text-white/90 sm:text-sm md:text-base max-w-xl mx-auto opacity-50">
-            Transformando dados em informações para o desenvolvimento cultural de Pernambuco
+            Transformando dados em informações para o desenvolvimento cultural do Estado
           </p>
         </div>
       </div>
