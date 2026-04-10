@@ -17,7 +17,7 @@ import pedro from "@/assets/Pedro Augusto - ObiC.jpeg";
 import danilo from "@/assets/Danilo.jpeg"
 /* IMPORTAR FOTOS INSTITUCIONAIS */
 import cacau from "@/assets/cacau.jpg";
-/* import anaPaula from "@/assets/ana-paula.jpg";*/
+import ana from "@/assets/ana.jpg";
 import yasmin from "@/assets/yasmin.jpg";
 
 /* Estrutura Institucional */
@@ -30,14 +30,15 @@ const institucional = [
     role: "Secretária de Cultura de Pernambuco",
     bio: "Jornalista, formada pela UNICAP, com MBA em Gestão de Marketing e Vendas pelo Cedepe Business School. Foi Secretária de Turismo e Lazer da Prefeitura do Recife e atuou no Marketing da Empresa Pernambucana de Turismo, onde ocupou os cargos de executiva sênior e gestora nacional, além de diretora comercial da Empetur. Também foi gerente de captação de Eventos Internacionais do Recife Convention & Visitors Bureau. Sempre divulgando a cultura de Pernambuco como nosso maior diferencial turístico e DNA do nosso estado, assumiu a gestão da Secretaria de Cultura do Governo do Estado de Pernambuco em agosto de 2023. O foco da sua gestão, alinhado ao plano de governo da governadora Raquel Lyra, é alavancar a cadeia produtiva da Cultura com a geração de emprego e renda, além de salvaguardar e valorizar as tradições do Estado.",
     initials: "CP",
-    photo: cacau, 
+    photo: cacau,
+    hilight: true, 
   },
   {
     name: "Ana Paula Jardim",
     role: "Secretária Executiva de Gestão",
-    bio: "Adicionar biografia institucional da Secretaria Executiva de Gestão.",
+    bio: "Ana Paula Nebl Jardim, advogada, pedagoga e especialista em Gestão Pública pela UPE, servidora pública do Estado de Pernambuco e atual Secretária Executiva de Gestão da Secretaria de Cultura de Pernambuco.",
     initials: "AP",
-    photo:"" ,
+    photo: ana,
     highlight: true,
   },
   {
@@ -149,7 +150,7 @@ const Equipe = () => {
 
                     <CardTitle>{member.name}</CardTitle>
 
-                    <CardDescription className="text-primary">
+                    <CardDescription className="text-primary" font-medium>
                       {member.role}
                     </CardDescription>
                   </CardHeader>
