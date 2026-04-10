@@ -41,7 +41,7 @@ const institucional = [
     highlight: true,
   },
   {
-    name: "Yasmin Neves",
+    name: "Yasmim Neves",
     role: "Secretária Executiva de Cultura",
     bio: "Yasmim Neves, brincante, Administradora de formação, foi Superintendente de Administração e Finanças, Gerente de Controle Interno, Gerente Administrativa, assumiu a Gerencia de Políticas Culturais e hoje exerce a função de Secretaria Executiva de Cultura da Secretaria Estadual de Cultura.",
     initials: "YN",
