@@ -104,7 +104,7 @@ const QuemSomos = () => {
                       Missão
                     </h2>
                   </div>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed text-justify">
                     Auxiliar a cultura pernambucana através de dados e
                     informações que promovam e apoiem as ações dos agentes,
                     equipamentos e das organizações governamentais e não
@@ -122,7 +122,7 @@ const QuemSomos = () => {
                       Visão
                     </h2>
                   </div>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed ">
                     Institucionalizar o monitoramento e a coleta sistemática de
                     dados e informações da cultura, buscando criar uma gestão
                     orientada por dados para tomada de decisão até 2026.
@@ -138,7 +138,7 @@ const QuemSomos = () => {
                       Valores
                     </h2>
                   </div>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed text-justify">
                     Transparência, ética, inovação e integridade em todas as
                     nossas ações e relacionamentos com stakeholders.
                   </p>
@@ -153,7 +153,7 @@ const QuemSomos = () => {
                       Objetivos
                     </h2>
                   </div>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed text-justify">
                     Criar uma cultura de dados na gestão pública e ampliar o
                     acesso às informações sobre agentes e equipamentos culturais
                     no estado de Pernambuco.

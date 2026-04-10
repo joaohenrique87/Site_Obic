@@ -6,7 +6,7 @@ import CarrosselRelatorio from "@/CarrosselRelatorio.jsx";
 import QuemSomosSection from "@/components/QuemSomosSection.jsx";
 
 // REMOVIDO: import logosParceiros from "../assets/regua.png";
-
+import regua from "@/assets/regua.png";
 import pnab from "@/assets/pnab.png";
 import lpg from "@/assets/lpg.jpeg";
 import rouanet from "@/assets/rouanet.png";
