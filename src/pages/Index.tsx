@@ -76,7 +76,7 @@ const Index = () => {
             </h2>
             <div className="flex items-center justify-center p-4">
               <img
-                src= "src/assets/regua.png" 
+                src= {regua} 
                 alt="Nossos Parceiros"
                 className="w-full max-w-4xl h-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
               />
