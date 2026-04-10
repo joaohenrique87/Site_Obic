@@ -16,11 +16,13 @@ import joao from "@/assets/João Henrique - ObIC.jpg";
 import pedro from "@/assets/Pedro Augusto - ObiC.jpeg";
 
 /* IMPORTAR FOTOS INSTITUCIONAIS */
-/*import cacau from "@/assets/cacau.jpg";
-/*import anaPaula from "@/assets/ana-paula.jpg";
+import cacau from "@/assets/cacau.jpg";
+/* import anaPaula from "@/assets/ana-paula.jpg";*/
 import yasmin from "@/assets/yasmin.jpg";
 
 /* Estrutura Institucional */
+
+
 
 const institucional = [
   {
@@ -28,22 +30,22 @@ const institucional = [
     role: "Secretária de Cultura de Pernambuco",
     bio: "Jornalista, formada pela UNICAP, com MBA em Gestão de Marketing e Vendas pelo Cedepe Business School. Foi Secretária de Turismo e Lazer da Prefeitura do Recife e atuou no Marketing da Empresa Pernambucana de Turismo, onde ocupou os cargos de executiva sênior e gestora nacional, além de diretora comercial da Empetur. Também foi gerente de captação de Eventos Internacionais do Recife Convention & Visitors Bureau. Sempre divulgando a cultura de Pernambuco como nosso maior diferencial turístico e DNA do nosso estado, assumiu a gestão da Secretaria de Cultura do Governo do Estado de Pernambuco em agosto de 2023. O foco da sua gestão, alinhado ao plano de governo da governadora Raquel Lyra, é alavancar a cadeia produtiva da Cultura com a geração de emprego e renda, além de salvaguardar e valorizar as tradições do Estado.",
     initials: "CP",
-    /*photo: cacau, */
+    photo: cacau, 
   },
   {
     name: "Ana Paula Jardim",
     role: "Secretária Executiva de Gestão",
     bio: "Adicionar biografia institucional da Secretaria Executiva de Gestão.",
     initials: "AP",
-    /*photo: cacau, */
+    photo:"" ,
     highlight: true,
   },
   {
     name: "Yasmin Neves",
     role: "Secretária Executiva de Cultura",
-    bio: "Adicionar biografia institucional da Secretaria Executiva de Cultura.",
+    bio: "Yasmim Neves, brincante, Administradora de formação, foi Superintendente de Administração e Finanças, Gerente de Controle Interno, Gerente Administrativa, assumiu a Gerencia de Políticas Culturais e hoje exerce a função de Secretaria Executiva de Cultura da Secretaria Estadual de Cultura.",
     initials: "YN",
-    /*photo: cacau, */
+    photo: yasmin,
     highlight: true,
   },
 ];
