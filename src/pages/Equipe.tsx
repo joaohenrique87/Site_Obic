@@ -14,7 +14,7 @@ import danillo from "@/assets/Danillo Rafael ObIC.jpg";
 import mariana from "@/assets/Mariana Barros ObIC.jpg";
 import joao from "@/assets/João Henrique - ObIC.jpg";
 import pedro from "@/assets/Pedro Augusto - ObiC.jpeg";
-
+import danilo from "@/assets/Danilo.jpeg"
 /* IMPORTAR FOTOS INSTITUCIONAIS */
 import cacau from "@/assets/cacau.jpg";
 /* import anaPaula from "@/assets/ana-paula.jpg";*/
@@ -86,6 +86,14 @@ const teamMembers = [
     initials: "PA",
     photo: pedro,
   },
+   {
+    name: "Danilo Gonçalves",
+    role: "Analista de Dados e Pesquisador",
+    bio: " Doutor em Administração Pública e Governo pela Fundação Getulio Vargas (FGV), bacharel e mestre em Ciência Política pela Universidade Federal de Pernambuco (UFPE).",
+    initials: "DG",
+    photo: danilo,
+  },
+ 
 ];
 
 const Equipe = () => {
