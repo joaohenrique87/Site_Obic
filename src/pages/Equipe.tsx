@@ -150,7 +150,7 @@ const Equipe = () => {
 
                     <CardTitle>{member.name}</CardTitle>
 
-                    <CardDescription className="text-primary" font-medium>
+                    <CardDescription className="font-bold, !text-primary">
                       {member.role}
                     </CardDescription>
                   </CardHeader>
