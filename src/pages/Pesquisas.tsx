@@ -8,26 +8,23 @@ import { fetchRelatorios } from "@/service/supabase";
 import pnabImg from "@/assets/pnab.png";
 import lpgImg from "@/assets/lpg.jpeg";
 import premiosImg from "@/assets/rouanet.png";
+import rbotImg from "@/assets/logo-rbot.png";
+import censoImg from "@/assets/Censo-dash.png"
 
 const PESQUISAS_CONFIG = [
   {
-    id: "PNAB",
-    titulo: "PNAB - Política Nacional Aldir Blanc",
-    img: pnabImg,
-    descricao: "Documentação e dados sobre a execução da Política Nacional Aldir Blanc em Pernambuco."
+    id: "RBOT",
+    titulo: "Pesquisa em Rede RBOT",
+    img: rbotImg,
+    descricao: `Este relatório apresenta os resultados da pesquisa em rede “Intersecção entre Cultura e Turismo”, realizada em parceria entre a Rede Brasileira de Observatórios de Turismo (RBOT) e o Observatório de Indicadores Culturais (ObIC). O estudo analisa a relação entre cultura e turismo em eventos regionais no Brasil, a partir de dados coletados em diferentes territórios e festivais. Com base em uma abordagem colaborativa e exploratória, a pesquisa investiga o perfil dos públicos, seus comportamentos e motivações. Os resultados evidenciam a complementaridade entre cultura e turismo e seu papel no desenvolvimento dos territórios. A iniciativa contribui para a produção de dados qualificados, apoiando a formulação de políticas públicas mais eficazes.`
   },
   {
-    id: "LPG",
-    titulo: "LPG - Lei Paulo Gustavo",
-    img: lpgImg,
-    descricao: "Relatórios e bases de dados sobre a implementação da Lei Paulo Gustavo no estado."
+    id: "CENSO",
+    titulo: "Primeiro Censo Cultural de Pernambuco",
+    img: censoImg,
+    descricao: "O Censo Cultural de Pernambuco é uma iniciativa estratégica voltada ao mapeamento detalhado de agentes e equipamentos, funcionando como um instrumento fundamental para a compreensão e o planejamento do desenvolvimento cultural. Por meio da coleta de dados quantitativos, a ferramenta identifica a diversidade de linguagens artísticas, suas distribuição geográficas e especificidades das áreas artístico-culturais. O Censo Cultural oferece uma base para estudos, a fim de gerar alocação eficiente de recursos e a formulação de políticas públicas inovadoras. Além de fortalecer a identidade cultural e a transparência na gestão, o Censo viabiliza a produção de relatórios técnicos da cultura como um pilar vital do desenvolvimento socioeconômico do estado."
   },
-  {
-    id: "PREMIOS DA CASA",
-    titulo: "Prêmios Culturais",
-    img: premiosImg,
-    descricao: "Análises e indicadores sobre editais de premiação e reconhecimento cultural."
-  }
+ 
 ];
 
 const Pesquisas = () => {
@@ -41,26 +38,34 @@ const Pesquisas = () => {
     });
   }, []);
 
-  const obterLinkArquivo = (pasta: string, tipo: "relatorio" | "base" | "formulario") => {
+  const obterLinkArquivo = (pastaStorage: string, tipo: "relatorio" | "base" | "formulario") => {
     const encontrado = arquivos.find(arq => {
       const caminho = arq.caminho_storage?.toLowerCase() || "";
       const nome = arq.nome_arquivo?.toLowerCase() || "";
-      const naPastaCorreta = caminho.startsWith(pasta.toLowerCase() + "/");
+      
+      const caminhoDesejado = `pesquisas/${pastaStorage.toLowerCase()}/`;
+      const naPastaCorreta = caminho.includes(caminhoDesejado);
 
       if (!naPastaCorreta) return false;
 
       switch (tipo) {
         case "relatorio":
-          return nome.endsWith(".pdf") && 
-          (nome.includes("relatorio") || nome.includes("escuta"));
+          // Agora verifica se a palavra está no nome OU no caminho
+          // E checa se a extensão .pdf está no CAMINHO (que nunca falha), não no nome
+          return (nome.includes("relatorio") || caminho.includes("relatorio")) && 
+                 caminho.endsWith(".pdf");
 
         case "base":
-          const extensoesDados = [".xlsx", ".csv", ".xls", ".rds"];
-          return extensoesDados.some(ext => nome.endsWith(ext)) 
-          || nome.includes("banco");
+          // Adicionei .zip e .rar caso vocês subam arquivos compactados
+          const extensoesDados = [".xlsx", ".csv", ".xls", ".rds", ".zip", ".rar"];
+          const temExtensao = extensoesDados.some(ext => caminho.endsWith(ext));
+          // Procura por "base" ou "banco" (já que no seu print está "Banco de Dados")
+          const temPalavraChave = nome.includes("banco") || nome.includes("base") || caminho.includes("banco");
+          
+          return temExtensao || temPalavraChave;
 
         case "formulario":
-          return nome.includes("formulario");
+          return nome.includes("formulario") || caminho.includes("formulario");
 
         default:
           return false;
@@ -81,8 +86,8 @@ const Pesquisas = () => {
           </h1>
         </div>
 
-        <Tabs defaultValue="PNAB" className="w-full">
-          
+        <Tabs defaultValue="RBOT" className="w-full">
+
           {/* Cards superiores */}
           <TabsList className="grid grid-cols-1 md:grid-cols-3 gap-6 h-auto bg-transparent mb-12">
             {PESQUISAS_CONFIG.map((p) => (
@@ -180,8 +185,8 @@ const BotaoArquivo = ({ icon, label, href, color }: any) => (
       transition-all
       shadow-soft
       ${color}
-      ${!href 
-        ? 'opacity-30 cursor-not-allowed grayscale' 
+      ${!href
+        ? 'opacity-30 cursor-not-allowed grayscale'
         : 'hover:scale-[1.03] hover:shadow-medium'
       }
     `}

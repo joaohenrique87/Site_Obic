@@ -14,7 +14,8 @@ import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 import Contato from "@/pages/Contato";
 import Whatsapp from "@/components/Whatsapp";
-import VLibras from "react-vlibras-plugin"; // Importação direta sem chaves se for export default
+import VLibras from "@/components/VLibrasWidget"; // Importação direta sem chaves se for export default
+import VLibrasWidget from "@/components/VLibrasWidget";
 
 const queryClient = new QueryClient();
 
@@ -26,7 +27,7 @@ const App = () => (
       <BrowserRouter>
         <ScrollToTop />
        
-        <VLibras forceOnload={true} /> 
+        
         
         <Routes>
           <Route path="/" element={<Index />} />
@@ -39,7 +40,7 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
         
-        
+        <VLibrasWidget />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

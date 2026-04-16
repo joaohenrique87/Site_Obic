@@ -56,7 +56,7 @@ const Hero = () => {
             Observatório de Indicadores Culturais e Inovação em Dados de Pernambuco
           </h1>
           <p className="mb-8 text-xs text-white/90 sm:text-sm md:text-base max-w-xl mx-auto opacity-50">
-            Transformando dados em informações para o desenvolvimento cultural do Estado
+            Atuando na produção, sistematização e análise de dados sobre a cultura em Pernambuco a partir de bases estruturadas, o ObIC desenvolve indicadores e estudos que qualificam o conhecimento sobre o setor cultural do estado de Pernambuco. Suas atividades apoiam a formulação, o monitoramento e a avaliação de políticas públicas. Dessa forma, contribui para o fortalecimento da gestão cultural orientada por evidências no estado.
           </p>
         </div>
       </div>

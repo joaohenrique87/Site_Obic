@@ -32,11 +32,23 @@ const getPublicUrl = (caminho) => {
 };
 
 const montarCaminho = (row) => {
-  if (row.caminho_storage.includes("/")) {
+ //Criar categoria 
+  const categoriaBase = row.categoria ? `${row.categoria}/` : "";
+  if (row.categoria && row.caminho_storage.startsWith(categoriaBase)){
     return row.caminho_storage;
   }
-  return `${row.categoria}/${row.caminho_storage}`;
-};
+
+  if (row.caminho_storage.includes("/")){
+
+    if (row.categoria === "pesquisas" || row.categoria === "Pesquisas"){
+      return `${categoriaBase}${row.caminho_storage}`;
+    }
+
+    return row.caminho_storage;
+  }
+    return row.categoria ? `${categoriaBase}${row.caminho_storage}` : row.caminho_storage;
+  };
+
 
 export const fetchRelatorios = async () => {
   try {

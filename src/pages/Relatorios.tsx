@@ -9,7 +9,8 @@ const CATEGORIAS = [
   { value: "lpg", label: "LPG" },
   { value: "pnab", label: "PNAB" },
   { value: "premios", label: "Prêmios" },
-  { value: "escutas", label: "Escutas" }
+  { value: "escutas", label: "Escutas" },
+  {value: "estudos", label: "Estudos"}
 ];
 
 // Função para extrair o ano do nome do arquivo
@@ -94,6 +95,7 @@ const RelatoriosPDF = () => {
       "lpg": "lpg",
       "lab": "lab",
       "escutas": "escutas",
+      "estudos": "estudos"
     };
     const categoriaIdentificada = mapCategorias[pastaRaiz] || pastaRaiz;
 

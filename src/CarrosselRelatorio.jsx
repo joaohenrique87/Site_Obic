@@ -137,16 +137,27 @@ const CarrosselRelatorio = () => {
   }, []);
 
   useEffect(() => {
-    fetchRelatorios()
-      .then((dados) => {
-        const validos = (dados || []).filter((arq) =>
-          arq.nome_arquivo?.toLowerCase().endsWith(".pdf")
-        );
-        setArquivos(validos);
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
-  }, []);
+  fetchRelatorios()
+    .then((dados) => {
+      console.log("Todos os dados:", dados);
+      console.log("Categorias únicas:", [...new Set(dados.map(d => d.categoria))]);
+      
+      const validos = (dados || []).filter((arq) => {
+        const isPdf = arq.nome_arquivo?.toLowerCase().endsWith(".pdf");
+        const isPesquisas = arq.categoria?.toLowerCase() === "pesquisas";
+        console.log(`Arquivo: ${arq.nome_arquivo} | categoria: "${arq.categoria}" | isPdf: ${isPdf} | isPesquisas: ${isPesquisas}`);
+        return isPdf && !isPesquisas;
+      });
+
+      console.log("Válidos após filtro:", validos);
+      setArquivos(validos);
+      setLoading(false);
+    })
+    .catch((err) => {
+      console.error("Erro:", err);
+      setLoading(false);
+    });
+}, []);
 
   if (loading)
     return (
