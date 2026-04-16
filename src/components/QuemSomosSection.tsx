@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Play } from "lucide-react";
 
 // ─── Edite aqui o ID do vídeo principal ──────────────────────
-const VIDEO_ID = "80EcQHpFv6Y";
+const VIDEO_ID = "wLSHwHQ9ycY";
 
 // ─── Edite aqui o link do canal/playlist para o botão "Ver mais" ─
-const YOUTUBE_CHANNEL_URL = `https://www.youtube.com/playlist?list=PLJDWpFL5ny_ooRDdzxZp13tFuJPb35Ih7`;
+const YOUTUBE_CHANNEL_URL = `https://www.youtube.com/secultpe`;
 
 const QuemSomosSection = () => {
   return (
@@ -55,7 +55,7 @@ const QuemSomosSection = () => {
             gap: "1.25rem",
           }}>
             <h2 style={{ fontFamily: "Cambria, serif", fontSize: "1.875rem", fontWeight: 700 }}>
-              ObiC na Mídia
+              Últimas Noticias
             </h2>
 
             {/* Player com borda e sombra refinados */}

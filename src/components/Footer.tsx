@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className="bg-muted border-t border-border">
       <div className="container py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
 
           {/* About */}
           <div className="space-y-4">
@@ -50,6 +50,33 @@ const Footer = () => {
                   Pesquisas
                 </Link>
               </li>
+            </ul>
+          </div>
+
+          {/* Inst */}
+          <div>
+            <h3 className="font-semibold text-foreground mb-4">Institucional</h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link to="https://www.pe.gov.br/" className="text-muted-foreground hover:text-primary transition-colors">
+                  Governo de Pernambuco
+                </Link>
+              </li>
+              <li>
+                <Link to="https://www.cultura.pe.gov.br/" className="text-muted-foreground hover:text-primary transition-colors">
+                  Cultura PE
+                </Link>
+              </li>
+              <li>
+                <Link to="https://www.mapacultural.pe.gov.br/" className="text-muted-foreground hover:text-primary transition-colors">
+                  Mapa Cultural de Pernambuco
+                </Link>
+              </li>
+              <li>
+                <Link to="https://www.cultura.pe.gov.br/pagina/ouve-pe/" className="text-muted-foreground hover:text-primary transition-colors">
+                  Ouvidoria - Ouve PE
+                </Link>
+              </li>              
             </ul>
           </div>
 
@@ -97,7 +124,7 @@ const Footer = () => {
                 <Linkedin className="h-5 w-5" />
               </a>
               <a
-                href="https://www.youtube.com/@ObIC-PE"
+                href="https://www.youtube.com/secultpe"
                 target="_blank"
                 rel="noreferrer"
                 className="h-10 w-10 rounded-full bg-background border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
