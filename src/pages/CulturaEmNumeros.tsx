@@ -5,6 +5,8 @@ import Footer from "@/components/Footer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import PDFList from "@/components/PDFList";
+import glossarioImg from "@/assets/Capa Glossario.jpg";
+
 
 const DashboardFrame = ({ src, title }: { src: string; title: string }) => {
   const [loading, setLoading] = useState(true);
@@ -34,7 +36,7 @@ const DashboardFrame = ({ src, title }: { src: string; title: string }) => {
         className="w-full"
         style={{ minHeight: '600px', border: 'none', display: 'block' }}
         allowFullScreen
-        onLoad={() => setTimeout(() => setLoading(false), 4000)}
+        onLoad={() => setTimeout(() => setLoading(false), 0)}
       />
     </div>
   );
@@ -51,7 +53,73 @@ const CulturaEmNumeros = () => {
     <div className="min-h-screen flex flex-col bg-background">
       <Header />
 
+
+
       <main className="flex-1 container py-12">
+        <section className="py-10 bg-muted/20 rounded-2xl mb-12 border border-border">
+          <div className="max-w-5xl mx-auto px-6">
+
+            <div className="flex flex-col md:flex-row items-center gap-8">
+
+              {/* Capa */}
+              <div className="w-full md:w-1/3 flex justify-center">
+                <img
+                  src={glossarioImg}
+                  alt="Glossário da Cultura"
+                  className="
+            w-52
+            md:w-60
+            rounded-xl
+            shadow-medium
+            hover:scale-[1.02]
+            transition-all
+          "
+                />
+              </div>
+
+              {/* Texto */}
+              <div className="flex-1">
+
+                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+                  Glossário da Cultura
+                </h2>
+
+                <p className="text-muted-foreground leading-relaxed text-justify mb-5">
+                  O Glossário da Cultura reúne termos técnicos e expressões utilizadas nas
+                  políticas culturais, facilitando a compreensão de editais, programas e
+                  instrumentos de fomento. O material foi desenvolvido para apoiar agentes
+                  culturais, gestores e pesquisadores, promovendo maior transparência e
+                  democratização da informação.
+                </p>
+
+                <a
+                  href="src\assets\Glossario da Cultura.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="
+            inline-flex
+            items-center
+            bg-primary
+            text-white
+            px-6
+            py-3
+            rounded-xl
+            font-semibold
+            hover:scale-[1.03]
+            transition-all
+            shadow-soft
+          "
+                >
+                  Baixar Glossário
+                </a>
+
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-foreground mb-4">Dados</h1>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">

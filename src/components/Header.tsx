@@ -96,7 +96,7 @@ const Header = () => {
               { to: "/equipe", label: "Equipe" },
               { to: "/cultura-em-numeros", label: "Cultura em Números" },
               { to: "/relatorios", label: "Relatórios" },
-              { to: "/pesquisas", label: "Pesquisas" },
+              { to: "/pesquisas", label: "Pesquisas e Estudos" },
             ].map((item) => (
               <Link
                 key={item.to}

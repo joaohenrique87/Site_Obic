@@ -54,7 +54,7 @@ const QuemSomosSection = () => {
             flexDirection: "column",
             gap: "1.25rem",
           }}>
-            <h2 style={{ fontFamily: "Cambria, serif", fontSize: "1.875rem", fontWeight: 700 }}>
+            <h2 style={{ fontFamily: "sans", fontSize: "1.875rem", fontWeight: 700, textAlign: "center" }}>
               Últimas Noticias
             </h2>
 

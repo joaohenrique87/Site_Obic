@@ -10,6 +10,8 @@ import lpgImg from "@/assets/lpg.jpeg";
 import premiosImg from "@/assets/rouanet.png";
 import rbotImg from "@/assets/logo-rbot.png";
 import censoImg from "@/assets/Censo-dash.png"
+import glossarioImg from "@/assets/Capa Glossario.jpg"
+
 
 const PESQUISAS_CONFIG = [
   {
@@ -24,7 +26,7 @@ const PESQUISAS_CONFIG = [
     img: censoImg,
     descricao: "O Censo Cultural de Pernambuco é uma iniciativa estratégica voltada ao mapeamento detalhado de agentes e equipamentos, funcionando como um instrumento fundamental para a compreensão e o planejamento do desenvolvimento cultural. Por meio da coleta de dados quantitativos, a ferramenta identifica a diversidade de linguagens artísticas, suas distribuição geográficas e especificidades das áreas artístico-culturais. O Censo Cultural oferece uma base para estudos, a fim de gerar alocação eficiente de recursos e a formulação de políticas públicas inovadoras. Além de fortalecer a identidade cultural e a transparência na gestão, o Censo viabiliza a produção de relatórios técnicos da cultura como um pilar vital do desenvolvimento socioeconômico do estado."
   },
- 
+
 ];
 
 const Pesquisas = () => {
@@ -42,7 +44,7 @@ const Pesquisas = () => {
     const encontrado = arquivos.find(arq => {
       const caminho = arq.caminho_storage?.toLowerCase() || "";
       const nome = arq.nome_arquivo?.toLowerCase() || "";
-      
+
       const caminhoDesejado = `pesquisas/${pastaStorage.toLowerCase()}/`;
       const naPastaCorreta = caminho.includes(caminhoDesejado);
 
@@ -52,8 +54,8 @@ const Pesquisas = () => {
         case "relatorio":
           // Agora verifica se a palavra está no nome OU no caminho
           // E checa se a extensão .pdf está no CAMINHO (que nunca falha), não no nome
-          return (nome.includes("relatorio") || caminho.includes("relatorio")) && 
-                 caminho.endsWith(".pdf");
+          return (nome.includes("relatorio") || caminho.includes("relatorio")) &&
+            caminho.endsWith(".pdf");
 
         case "base":
           // Adicionei .zip e .rar caso vocês subam arquivos compactados
@@ -61,7 +63,7 @@ const Pesquisas = () => {
           const temExtensao = extensoesDados.some(ext => caminho.endsWith(ext));
           // Procura por "base" ou "banco" (já que no seu print está "Banco de Dados")
           const temPalavraChave = nome.includes("banco") || nome.includes("base") || caminho.includes("banco");
-          
+
           return temExtensao || temPalavraChave;
 
         case "formulario":
@@ -80,6 +82,71 @@ const Pesquisas = () => {
       <Header />
 
       <main className="flex-1 container py-12">
+        <section className="py-10 bg-muted/20 rounded-2xl mb-12 border border-border">
+          <div className="max-w-5xl mx-auto px-6">
+
+            <div className="flex flex-col md:flex-row items-center gap-8">
+
+              {/* Capa */}
+              <div className="w-full md:w-1/3 flex justify-center">
+                <img
+                  src={glossarioImg}
+                  alt="Glossário da Cultura"
+                  className="
+            w-52
+            md:w-60
+            rounded-xl
+            shadow-medium
+            hover:scale-[1.02]
+            transition-all
+          "
+                />
+              </div>
+
+              {/* Texto */}
+              <div className="flex-1">
+
+                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+                  Glossário da Cultura
+                </h2>
+
+                <p className="text-muted-foreground leading-relaxed text-justify mb-5">
+                  O Glossário da Cultura reúne termos técnicos e expressões utilizadas nas
+                  políticas culturais, facilitando a compreensão de editais, programas e
+                  instrumentos de fomento. O material foi desenvolvido para apoiar agentes
+                  culturais, gestores e pesquisadores, promovendo maior transparência e
+                  democratização da informação.
+                </p>
+
+                <a
+                  href={glossarioImg}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="
+            inline-flex
+            items-center
+            bg-primary
+            text-white
+            px-6
+            py-3
+            rounded-xl
+            font-semibold
+            hover:scale-[1.03]
+            transition-all
+            shadow-soft
+          "
+                >
+                  Baixar Glossário
+                </a>
+
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
+
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-foreground">
             Pesquisas
